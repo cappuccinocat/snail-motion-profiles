@@ -13,12 +13,16 @@ import { SettingsService } from './settings.service';
 })
 
 export class SettingsComponent implements OnInit {
+    settings: Settings;
     constructor(
       private settingsService: SettingsService
     ){}
 
-    ngOnInit() { }
+    ngOnInit(): void {
+      this.settingsService.getSettings().then(setting => this.settings = setting);
+    }
 
     onSave() {
+      this.settingsService.update(this.settings)
     }
 }

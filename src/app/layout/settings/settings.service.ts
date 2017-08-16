@@ -13,7 +13,7 @@ export class SettingsService {
 
   constructor(private http: Http) { }
 
-  getSettings(): Promise<Settings[]> {
+  getSettings(): Promise<Settings> {
     return this.http.get(this.settingsUrl)
                .toPromise()
                .then(response => response.json().data as Settings)

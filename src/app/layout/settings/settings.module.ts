@@ -14,7 +14,7 @@ import { InMemoryDataService }  from './../fakedb/in-memory-data.service';
         SettingsRoutingModule,
         PageHeaderModule,
         FormsModule,
-        InMemoryWebApiModule.forRoot(InMemoryDataService),
+        InMemoryWebApiModule.forRoot(InMemoryDataService, {passThruUnknownUrl: true}),
     ],
     declarations: [SettingsComponent]
 })
