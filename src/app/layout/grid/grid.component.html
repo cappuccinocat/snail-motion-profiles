@@ -1,0 +1,29 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Settings'" [icon]="'fa-edit'"></app-page-header>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <form role="form">
+                <fieldset class="form-group">
+                    <label>Max Accel</label>
+                    <input class="form-control">
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Max Jerk</label>
+                    <input class="form-control">
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Max Velocity</label>
+                    <input class="form-control">
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Wheelbase Width</label>
+                    <input class="form-control">
+                </fieldset>
+
+                <button type="submit" class="btn btn-secondary" (click)="onSave()">Save</button>
+                <button type="reset" class="btn btn-secondary">Reset</button>
+            </form>
+        </div>
+    </div>
+</div>
