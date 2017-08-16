@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { GridComponent } from './grid.component';
+import { SettingsComponent } from './settings.component';
 
 const routes: Routes = [
-    { path: '', component: GridComponent }
+    { path: '', component: SettingsComponent }
 ];
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class GridRoutingModule { }
+export class SettingsRoutingModule { }
