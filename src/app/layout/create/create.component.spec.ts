@@ -20,7 +20,6 @@ describe('CreateComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

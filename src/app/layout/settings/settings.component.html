@@ -6,19 +6,19 @@
             <form role="form">
                 <fieldset class="form-group">
                     <label>Max Accel</label>
-                    <input class="form-control" [(ngModel)]="settings.accel">
+                    <input class="form-control" [(ngModel)]="settings.accel" name="accel">
                 </fieldset>
                 <fieldset class="form-group">
                     <label>Max Jerk</label>
-                    <input class="form-control" [(ngModel)]="settings.jerk">
+                    <!--<input class="form-control" [(ngModel)]="settings.jerk">-->
                 </fieldset>
                 <fieldset class="form-group">
                     <label>Max Velocity</label>
-                    <input class="form-control" [(ngModel)]="settings.vel">
+                    <!--<input class="form-control" [(ngModel)]="settings.vel">-->
                 </fieldset>
                 <fieldset class="form-group">
                     <label>Wheelbase Width</label>
-                    <input class="form-control" [(ngModel)]="settings.width">
+                    <!--<input class="form-control" [(ngModel)]="settings.width"-->
                 </fieldset>
 
                 <button type="submit" class="btn btn-secondary" (click)="onSave()">Save</button>

@@ -13,13 +13,18 @@ import { SettingsService } from './settings.service';
 })
 
 export class SettingsComponent implements OnInit {
-    settings: Settings;
+    settings: Settings = {
+      accel:0.0,
+      jerk:0.0,
+      vel:0.0,
+      width:0.0
+    };
     constructor(
       private settingsService: SettingsService
     ){}
 
     ngOnInit(): void {
-      this.settingsService.getSettings().then(setting => this.settings = setting);
+      //this.settingsService.getSettings().then(setting => this.settings = setting);
     }
 
     onSave() {
