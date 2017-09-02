@@ -13,7 +13,7 @@ import { SettingsService } from './settings.service';
 })
 
 export class SettingsComponent implements OnInit {
-    settings: Settings;
+    settings: Settings = new Settings(0, 0, 0, 0);
     constructor(
       private settingsService: SettingsService
     ){}

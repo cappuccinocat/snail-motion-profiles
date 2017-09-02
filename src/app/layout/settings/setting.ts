@@ -1,6 +1,8 @@
 export class Settings {
-  accel: number;
-  jerk: number;
-  vel: number;
-  width: number;
+  constructor(
+    public accel: number,
+    public jerk: number,
+    public vel: number,
+    public width: number
+  ) {  }
 }

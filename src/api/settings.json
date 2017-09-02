@@ -1,8 +1,8 @@
 {
    "settings" : {
       "accel" : 0,
-	  "jerk" : 0,
-	  "vel" : 0,
-	  "width": 0
+  	  "jerk" : 0,
+  	  "vel" : 0,
+  	  "width": 0
    }
 }
