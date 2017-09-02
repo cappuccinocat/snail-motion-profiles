@@ -1,7 +1,7 @@
 <div [@routerTransition]>
     <app-page-header [heading]="'Create A New Path'" [icon]="'fa-edit'"></app-page-header>
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col">
             <form role="form">
                 <fieldset class="form-group">
                     <input class="form-control" placeholder="Path Name">
@@ -14,7 +14,8 @@
                 <button type="submit" class="btn btn-secondary">Generate</button>
                 <button type="reset" class="btn btn-secondary">Reset</button>
             </form>
-
+        </div>
+        <div class="col">
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h3 class="panel-title">Edit Waypoints</h3>
