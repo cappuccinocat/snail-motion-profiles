@@ -4,12 +4,13 @@
     "license": "MIT",
     "scripts": {
         "ng": "ng",
-        "start": "ng serve --ec true --port 4201",
+        "start": "ng serve --ec true --port 4201 --proxy-config proxy.config.json",
         "build": "ng build --prod",
         "gitbuild": "ng build --prod --base /start-angular/SB-Admin-BS4-Angular-4/master/dist/",
         "test": "ng test",
         "lint": "ng lint",
-        "e2e": "ng e2e"
+        "e2e": "ng e2e",
+        "launch": "concurrently \"ng serve --ec true --port 4201\" \"node \\Users\\temp\\Documents\\GitHub\\snail-motion-profiles\\src\\api\\server.js\""
     },
     "private": true,
     "dependencies": {

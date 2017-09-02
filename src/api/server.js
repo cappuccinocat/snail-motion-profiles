@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var fs = require("fs");
 
-app.get('/settings', function (req, res) {
+app.get('/api/settings', function (req, res) {
    fs.readFile( __dirname + "/" + "settings.json", 'utf8', function (err, data) {
        console.log( data );
        res.end( data );
