@@ -1,5 +1,8 @@
-# Snail Motion
+# Achatinidae Motion
 Motion profiling/trajectory generating graphical website.
+
+#Why is it called Achatinidae Motion Profiles?
+It's called Achatinidae for snails, since my robotics team nickname is Snail.
 
 # Getting Started
 To run the program, you must first clone the repository and install the dependencies.
