@@ -22,6 +22,7 @@ export class CanvasComponent implements AfterViewInit {
   @Input() public height = 750;
 
   public cx: CanvasRenderingContext2D;
+  public radius = 10;
 
   public ngAfterViewInit() {
     const canvasEl: HTMLCanvasElement = this.canvas.nativeElement;
@@ -39,40 +40,28 @@ export class CanvasComponent implements AfterViewInit {
 
   private captureEvents(canvasEl: HTMLCanvasElement) {
     Observable
-      .fromEvent(canvasEl, 'mousedown')
-      .switchMap((e) => {
-        return Observable
-          .fromEvent(canvasEl, 'mousemove')
-          .takeUntil(Observable.fromEvent(canvasEl, 'mouseup'))
-          .pairwise()
-      })
-      .subscribe((res: [MouseEvent, MouseEvent]) => {
+      .fromEvent(canvasEl, 'click')
+      .subscribe((res: MouseEvent) => {
         const rect = canvasEl.getBoundingClientRect();
 
-        const prevPos = {
-          x: res[0].clientX - rect.left,
-          y: res[0].clientY - rect.top
+        const pos = {
+          x: res.clientX - rect.left,
+          y: res.clientY - rect.top
         };
 
-        const currentPos = {
-          x: res[1].clientX - rect.left,
-          y: res[1].clientY - rect.top
-        };
-
-        this.drawOnCanvas(prevPos, currentPos);
+        this.drawWaypoint(pos);
       });
   }
 
-  private drawOnCanvas(prevPos: { x: number, y: number }, currentPos: { x: number, y: number }) {
+  private drawWaypoint(pos: { x: number, y: number }) {
     if (!this.cx) { return; }
-
-    this.cx.beginPath();
-
-    if (prevPos) {
-      this.cx.moveTo(prevPos.x, prevPos.y); // from
-      this.cx.lineTo(currentPos.x, currentPos.y);
-      this.cx.stroke();
-    }
+    this.cx.moveTo(pos.x, pos.y);
+    this.cx.ellipse(pos.x, pos.y, this.radius, this.radius,  0, 0, 2 * Math.PI)
+    this.cx.moveTo(pos.x - this.radius, pos.y);
+    this.cx.lineTo(pos.x + this.radius, pos.y);
+    this.cx.moveTo(pos.x, pos.y - this.radius);
+    this.cx.lineTo(pos.x, pos.y + this.radius);
+    this.cx.stroke();
   }
 
   private drawBackground(canvasEl: HTMLCanvasElement){
