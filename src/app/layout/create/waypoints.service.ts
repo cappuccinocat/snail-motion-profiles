@@ -13,19 +13,18 @@ export class WaypointsService {
 
   constructor(private http: Http) { }
 
-  getWaypoints(): Promise<Waypoint[]> {
-    return this.http.get(this.waypointsUrl)
-               .toPromise()
-               .then(response => response.json().data as Waypoint[])
-               .catch(this.handleError);
+  getWaypoints(): Waypoint[] {
+    var result;
+    this.http.get(this.waypointsUrl).subscribe(data => {
+      // Read the result field from the JSON response.
+      result = data.json().data as Waypoint[]
+    });
+    return result;
   }
 
-  update(waypointArr): Promise<Waypoint[]> {
-    return this.http
-      .put(this.waypointsUrl, JSON.stringify(waypointArr), {headers: this.headers})
-      .toPromise()
-      .then(() => waypointArr)
-      .catch(this.handleError);
+  update(waypointArr){
+    this.http
+      .put(this.waypointsUrl, JSON.stringify(waypointArr), {headers: this.headers});
   }
 
   private handleError(error: any): Promise<any> {
