@@ -2,6 +2,8 @@ import {
   Component, Input, ElementRef, AfterViewInit, ViewChild
 } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { Waypoint } from './waypoint';
+import { WaypointsService } from './waypoints.service';
 
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/operator/takeUntil';
@@ -11,18 +13,24 @@ import 'rxjs/add/operator/switchMap';
 @Component({
   selector: 'app-canvas',
   template: '<canvas #canvas></canvas>',
-  styles: ['canvas { border: 1px solid #000; }']
+  styles: ['canvas { border: 1px solid #000; }'],
+  providers: [WaypointsService]
 })
 
 export class CanvasComponent implements AfterViewInit {
 
-  @ViewChild('canvas') public canvas: ElementRef;
+  @ViewChild('canvas') private canvas: ElementRef;
 
-  @Input() public width = 468;
-  @Input() public height = 750;
+  @Input() private width = 468;
+  @Input() private height = 750;
 
-  public cx: CanvasRenderingContext2D;
-  public radius = 10;
+  private cx: CanvasRenderingContext2D;
+  private radius = 10;
+  public waypoints: Waypoint[] = [];
+
+  constructor(
+    private waypointsService: WaypointsService
+  ){}
 
   public ngAfterViewInit() {
     const canvasEl: HTMLCanvasElement = this.canvas.nativeElement;
@@ -49,6 +57,8 @@ export class CanvasComponent implements AfterViewInit {
           y: res.clientY - rect.top
         };
 
+        this.waypoints.push(new Waypoint(pos.x, pos.y));
+        this.waypointsService.update(this.waypoints)
         this.drawWaypoint(pos);
       });
   }
@@ -73,5 +83,4 @@ export class CanvasComponent implements AfterViewInit {
     };
     img.src = 'assets/images/field.jpg';
   }
-
 }

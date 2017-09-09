@@ -9,6 +9,13 @@ app.get('/api/settings', function (req, res) {
    });
 })
 
+app.get('/api/waypoints', function (req, res) {
+   fs.readFile( __dirname + "/" + "waypoints.json", 'utf8', function (err, data) {
+       console.log( data );
+       res.end( data );
+   });
+})
+
 var server = app.listen(8081, function () {
 
   var host = server.address().address
